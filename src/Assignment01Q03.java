@@ -1,18 +1,27 @@
 public class Assignment01Q03 {
     public static void main(String[] args) {
-        int x = 10; // TODO: Read the first string argument (replace this line)
+        int x = Integer.parseInt(args[0]);
         System.out.println("The first " + x + " Fibonacci numbers are:");
 
-        ////////////////////////////////////////////////////////////////
-        // TODO: Replace this code with the correct Fibonacci sequence
-        ////////////////////////////////////////////////////////////////
-        /// ...
+        int prev = 1;
+        int curr = 1;
+        int next = 1;
+
+        System.out.print("1 1 ");
         
-        int numOdd = 0;
-        for (int i = 0; i < x; i++) {
-            System.out.print(i);
+        int numOdd = 2; // the sequence must start with 2 ones, which are odd 
+        for (int i = 2; i < x; i++) {
+            next = prev + curr;
+
+            if (next % 2 == 1) {
+                numOdd++;
+            }
+
+            System.out.print(next);
             if (i < x - 1) 
                 System.out.print(" "); // Make sure we don't print a trailing space
+            prev = curr;
+            curr = next;
         }
         System.out.println();
         
