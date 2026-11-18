@@ -1,9 +1,36 @@
 import java.util.Arrays;
 
 public class Assignment01Q04 {
+    public static int[] rightShift(int[] array) {
+        int last = array[array.length - 1];
+
+        for (int i = array.length - 1; i >= 1; i--) {
+            array[i] = array[i - 1];
+        }
+        array[0] = last;
+
+        return array;
+    }
 
     public static int[] shiftArrayCyclic(int[] array, int move, char direction) {
-        // TODO: implement
+        if ((direction != 'L' && direction != 'R') || array.length == 0) {
+            return array;
+        }
+
+        int n = array.length;
+
+        // shifting left by move is identicle to shifting right by -move 
+        int shift = (direction == 'R' ? move : -move) % n;
+        if (shift < 0) {
+            shift += n;
+        }
+
+       int[] copy = array.clone();
+
+        for (int i = 0; i < n; i++) {
+            array[(i + shift) % n] = copy[i];
+        }
+
         return array;
     }
 
